@@ -1,23 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import {
+  AppProvider,
+  Page,
+  Card,
+  ResourceList,
+  Avatar,
+  Text,
+} from "@shopify/polaris";
+import React from "react";
+import NewList from "./NewList";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <AppProvider
+        i18n={{
+          Polaris: {
+            ResourceList: {
+              sortingLabel: "Sort by",
+              defaultItemSingular: "item",
+              defaultItemPlural: "items",
+              showing: "Showing {itemsCount} {resource}",
+              Item: {
+                viewItem: "View details for {itemName}",
+              },
+            },
+            Common: {
+              checkbox: "checkbox",
+            },
+          },
+        }}
+      >
+        <div style={{ maxWidth: "1000px", margin: "2rem auto" }}>
+          <NewList />
+        </div>
+      </AppProvider>
     </div>
   );
 }
